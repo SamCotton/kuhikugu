@@ -116,6 +116,7 @@ The most plausible explanations are:
 ![rings vs agriculture normed](https://github.com/user-attachments/assets/066be2c5-1c7a-4088-a639-c7c4c2aa444a)
 ![local contour](https://github.com/user-attachments/assets/5f798d9a-8a0b-4122-8cdf-e120b99a5a91)
 
+A secondary site north of the circular region, at -11.18965,-53.42145, is also considered suspicious and is intended for further investigation with more extensive spectral analysis
 
 
 ## Next Steps
