@@ -26,6 +26,10 @@ The structure is:
 
 The anomaly does **not resemble typical oxbow lakes**, agricultural clearings, or geologic depressions.
 
+Site Context and Distance from Known Complexes
+
+This anomaly is located at –11.19086, –53.42407, approximately 146 km north-northwest of the Kuhikugu complex, the best-documented pre-Columbian settlement cluster in the upper Xingu region. Kuhikugu has been the focus of targeted LIDAR surveys and archaeological excavations, but these campaigns have remained spatially constrained, and to my knowledge no publicly available high-resolution data (LIDAR or otherwise) exists for the anomaly’s coordinates. This places the circular feature well outside the established zone of investigation, yet still within the plausible trade and ritual influence network of the upper Xingu civilizations.
+
 ---
 
 ## Evidence Summary
@@ -36,7 +40,7 @@ Processed using QGIS with raster calculator and custom band composites.
 
 * **Clay Index** and **Burn Index** both detect coherent signal across the circular feature
 
-  * Signal is distinct from modern slash-and-burn agricultural plots. Via my approach agricultural sites show a visible path, but no access to this site is visible
+  * Signal is distinct from modern slash-and-burn agricultural plots.
   * Unlike riverbank-adjacent settlements, this ring lies **inland and disconnected** from any transport corridor
 * **NDVI** suggests **intermediate vegetation** density, possibly second growth or altered soil fertility
 * Burn and clay signals were **normalized** using 2%/98% thresholds and **differenced**, revealing the ring’s distinct spectral fingerprint
