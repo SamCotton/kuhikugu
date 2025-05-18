@@ -36,7 +36,7 @@ Processed using QGIS with raster calculator and custom band composites.
 
 * **Clay Index** and **Burn Index** both detect coherent signal across the circular feature
 
-  * Signal is distinct from modern slash-and-burn agricultural plots
+  * Signal is distinct from modern slash-and-burn agricultural plots. Via my approach agricultural sites show a visible path, but no access to this site is visible
   * Unlike riverbank-adjacent settlements, this ring lies **inland and disconnected** from any transport corridor
 * **NDVI** suggests **intermediate vegetation** density, possibly second growth or altered soil fertility
 * Burn and clay signals were **normalized** using 2%/98% thresholds and **differenced**, revealing the ring’s distinct spectral fingerprint
