@@ -1,4 +1,6 @@
-![google maps 2](https://github.com/user-attachments/assets/59adf44a-57fc-41ab-b8cc-4c095106fcac)# kuhikugu
+![google maps 2](https://github.com/user-attachments/assets/59adf44a-57fc-41ab-b8cc-4c095106fcac)
+
+# kuhikugu
 Findings for OpenAI to Z archaeological research
 
 # Discovery of a 1.7 km Circular Elevated Anomaly in the Upper Amazon Basin (Polsby–Popper 0.965)
@@ -7,14 +9,14 @@ Findings for OpenAI to Z archaeological research
 **Author:** Sam Cotton
 **Project:** OpenAI to Z Archaeological Prize
 **Location:** \~North of Kuhikugu, Upper Amazon Basin
-**Coordinates:** Withheld in this version for blinding, available on request or in locked repo.
-**Repository:** \[GitHub repo or permalink to be inserted here]
-
+**Coordinates:** latitude -11.27741, longitude -53.42656
+**Datasets** 
+Sentinel-2: S2A_MSIL2A_20240914T134701_N0511_R024_T22LBN_20240914T191605.SAFE
 ---
 
 ## Summary
 
-I have identified a near-perfect 1.7 km-diameter circular feature in the Upper Amazon, centered at latitude –11.19086, longitude –53.42407, situated on elevated terrain approximately 30 meters above the adjacent river systems.
+I have identified a near-perfect 1.7 km-diameter circular feature in the Upper Amazon, centered at latitude -11.27741, longitude -53.42656, situated on elevated terrain approximately 30 meters above the adjacent river systems.
 
 The structure is:
 
