@@ -1,0 +1,130 @@
+(via GPT-o4-mini-high)
+
+Here’s a step-by-step recipe for bringing your GEDI points into QGIS, extracting Sentinel-2 values at those locations, and then using both datasets together to look for linear depressions (trenches) in your anomalous zone:
+
+---
+
+## 1. Load your GEDI CSV as a point layer
+
+1. **Layer → Add Layer → Add Delimited Text Layer…**
+
+   * **File name:** your CSV
+   * **Geometry definition:** “Point coordinates”
+   * **X field:** your longitude column
+   * **Y field:** your latitude column
+   * **Geometry CRS:** EPSG:4326 (WGS 84)
+2. Click **Add**. You should now see your GEDI shots as a point layer.
+
+> **Tip:** If your CSV has header rows or weird delimiters, open it in a text editor first to verify the columns.
+
+---
+
+## 2. Reproject (if needed) to match your Sentinel-2 data
+
+Most Sentinel-2 scenes come in UTM.
+
+1. Right-click your GEDI point layer → **Export → Save Features As…**
+2. Set **CRS** to match the Sentinel-2 mosaic (e.g. EPSG:32722 for UTM zone 22 S).
+3. Save as a GeoPackage or Shapefile.
+
+---
+
+## 3. Bring in your Sentinel-2 imagery
+
+1. **Layer → Add Raster Layer…** and select your composite (e.g. an RGB or SWIR band stack).
+2. Make sure it’s in the same CRS as your reprojected GEDI points.
+
+---
+
+## 4. Sample Sentinel-2 values at GEDI locations
+
+You have two main options:
+
+### A. “Point sampling tool” plugin
+
+1. **Plugins → Manage and Install Plugins…** → search “Point Sampling Tool” → Install.
+2. **Plugins → Analyses → Point Sampling Tool**
+
+   * **Layer containing sampling points:** your GEDI points
+   * **Layers to sample:** check your Sentinel-2 raster(s)
+   * **Output point vector layer:** choose a new GeoPackage or CSV
+3. Run. The output layer now has Sentinel-2 band values in its attribute table.
+
+### B. Built-in “Sample raster values”
+
+1. **Processing → Toolbox → Raster analysis → Sample raster values**
+2. **Input point layer:** your GEDI points
+3. **Raster layers:** your Sentinel-2 bands
+4. **Output:** new point layer with added fields
+
+---
+
+## 5. Compute canopy–ground height difference
+
+1. In the new sampled point layer’s attribute table, open **Field Calculator**.
+2. Create a new field, e.g. `dHeight`, with expression:
+
+   ```
+   "canopy_height" - "ground_height"
+   ```
+3. Click OK. Now each point has a `dHeight` value.
+
+---
+
+## 6. (Optional) Interpolate a continuous height-difference surface
+
+To better visualize subtle linear lows:
+
+1. **Processing → Toolbox → Interpolation → Inverse distance weighting (IDW)**
+2. **Input point layer:** your sampled GEDI points
+3. **Interpolation attribute:** `dHeight`
+4. **Cell size:** match your Sentinel-2 resolution (e.g. 10 m)
+5. **Output raster:** a new IDW surface
+
+---
+
+## 7. Derive slope or shaded‐relief from the interpolated surface
+
+Trenches often appear as linear bands of higher slope:
+
+1. **Raster → Analysis → Slope…**
+2. **Input layer:** your IDW raster
+3. **Output:** slope raster (degrees or percent)
+
+---
+
+## 8. Styling for trench detection
+
+1. **Sentinel-2**
+
+   * Display as RGB or your clay-iron ratio index to highlight soil exposures.
+2. **Height-diff or slope raster**
+
+   * Use a **single-band pseudocolor** ramp with a narrow stretch around zero, or
+   * Classify into a few bins so linear depressions (negative `dHeight`) stand out.
+3. **Overlay**
+
+   * Lower the opacity of your height-diff/slope layer to let Sentinel imagery show through.
+   * Zoom into your 1.7 km circle and look for N–S or E–W linear lows—those could be trenches.
+
+---
+
+## 9. Quick visual QC
+
+* **Identify clusters** of negative `dHeight` points, then
+* **Zoom to the same area** in Sentinel-2 and inspect textural or spectral anomalies along those lines.
+
+If both the point‐based dHeight and the Sentinel bands coincide in showing a linear low or different soil signature, you’ve got a strong trench candidate.
+
+---
+
+### Recap
+
+1. Import your GEDI CSV as points.
+2. Reproject to match Sentinel-2.
+3. Sample Sentinel-2 bands at the GEDI points.
+4. Compute canopy–ground height differences.
+5. Optionally interpolate to a raster and derive slope.
+6. Style and overlay to visualize possible trenches.
+
+With these layers side by side, you can confidently compare ground-truth height anomalies against the spectral patterns in Sentinel-2 and spot linear depressions that might be archaeological trenches.
